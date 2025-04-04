@@ -1,15 +1,15 @@
-    import {FC, ReactNode} from "react";
+import {FC} from "react";
 
-    type CoursePropsType = {
-        title: string
-        children?: ReactNode
+type CoursePropsType = {
+        title: string;
+        monthDuration: number;
     }
 
-    const Course:FC<CoursePropsType> = ({title, children}) => {
+    const Course:FC<CoursePropsType> = (course) => {
         return (
-            <div>
-                {children} - {title}
-            </div>
+            <li className={'text-left text-shadow-lg/20'}>
+                {course.title} - {course.monthDuration}
+            </li>
         );
     };
 
