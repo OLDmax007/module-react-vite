@@ -13,6 +13,20 @@
     align-items: center;
 }
 
-.aaa {
+.modules-list {
+    margin-left: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(4, auto);
+    gap: 10px;
+}
+
+
+main {
     padding: 10px;
+}
+
+main > div {
+    padding: 50px;
+    gap: 50px;
 }

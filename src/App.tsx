@@ -1,10 +1,10 @@
 import './App.css'
-import Courses from "./components/courses/Courses.tsx";
+import CoursesComponent from "./components/courses/CoursesComponent.tsx";
 
 function App() {
   return (
-      <main>
-        <Courses/>
+      <main className={'bg-pink-200'}>
+        <CoursesComponent/>
       </main>
   )
 }
