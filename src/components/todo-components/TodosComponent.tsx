@@ -23,7 +23,7 @@ const TodosComponent = () => {
     return (
         <div className={'grid grid-cols-4 gap-4'}>
             {todos.map((todo:ITodo) => (
-                <TodoComponent todo={todo}/>
+                <TodoComponent todo={todo} key={todo.id}/>
             ))}
         </div>
     );
