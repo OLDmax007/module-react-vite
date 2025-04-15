@@ -1,7 +1,12 @@
 export interface CommentModel {
-	postId: number;
 	id: number;
-	name: string;
-	email: string;
 	body: string;
+	postId: number;
+	likes: number;
+	user: UserModel;
+}
+interface UserModel {
+	id: number;
+	username: string;
+	fullName: string;
 }

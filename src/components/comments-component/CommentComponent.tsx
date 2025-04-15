@@ -6,10 +6,10 @@ type CommentComponentProps = {
     comment: CommentModel
 }
 
-const CommentComponent:FC<CommentComponentProps> = ({comment: {name, body}}) => {
+const CommentComponent:FC<CommentComponentProps> = ({comment: {id, body}}) => {
     return (
         <ul className="list-decimal p-5">
-            <li className={'underline'}>{name.toUpperCase()}</li>
+            <li className={'underline'}>{id}</li>
             <li>
                 {body}
             </li>

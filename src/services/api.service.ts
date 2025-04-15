@@ -1,17 +1,21 @@
 import {TodoModel} from "../models/TodoModel.ts";
 import {PostModel} from "../models/PostModel.ts";
 import {CommentModel} from "../models/CommentModel.ts";
+import {ApiResponseModel} from "../models/ApiResponseModel.ts";
 
 const getTodos = async () : Promise<TodoModel[]> => {
-    return (await fetch(import.meta.env.VITE_API_JPL_BASE_URL + '/todos')).json()
+    const res:ApiResponseModel<TodoModel, 'todos'> = await (await fetch(import.meta.env.VITE_API_DMJS_BASE_URL + '/todos')).json()
+    return res.todos
 }
 
 const getPosts = async () : Promise<PostModel[]> => {
-    return (await fetch(import.meta.env.VITE_API_JPL_BASE_URL + '/posts')).json()
+    const res:ApiResponseModel<PostModel, 'posts'> = await (await fetch(import.meta.env.VITE_API_DMJS_BASE_URL + '/posts')).json()
+    return res.posts
 }
 
 const getComments = async () : Promise<CommentModel[]> => {
-    return (await fetch(import.meta.env.VITE_API_JPL_BASE_URL + '/comments')).json()
+    const res:ApiResponseModel<CommentModel, 'comments'> = await (await fetch(import.meta.env.VITE_API_DMJS_BASE_URL + '/comments')).json()
+    return res.comments
 }
 
 
