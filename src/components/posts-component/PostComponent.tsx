@@ -1,20 +1,20 @@
-import {ITodo} from "../../models/ITodo.ts";
+import {PostModel} from "../../models/PostModel.ts";
 import {FC} from "react";
 
 
 type TodoComponentProps = {
-    todo: ITodo
+    post: PostModel
 }
 
-const TodoComponent:FC<TodoComponentProps> = ({todo: {title, completed}}) => {
+const PostComponent:FC<TodoComponentProps> = ({post: {title, body}}) => {
     return (
         <ul className="list-decimal p-5">
             <li className={'underline'}>{title.toUpperCase()}</li>
             <li>
-                { completed ? 'Completed' : 'Not yet'}
+                {body}
             </li>
         </ul>
     );
 };
 
-export default TodoComponent;
+export default PostComponent;
