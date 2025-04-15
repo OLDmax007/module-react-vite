@@ -1,14 +1,17 @@
 import TodosComponent from "./components/todos-component/TodosComponent.tsx";
 import PostsComponent from "./components/posts-component/PostsComponent.tsx";
+import CommentsComponent from "./components/comments-component/CommentsComponent.tsx";
 
 function App() {
 
 
-    return( <main>
+    return(<main>
             <TodosComponent/>
             <hr/>
             <PostsComponent/>
-    </main>
+            <hr/>
+            <CommentsComponent/>
+        </main>
     );
 };
 
