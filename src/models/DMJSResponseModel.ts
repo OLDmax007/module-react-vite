@@ -1,4 +1,4 @@
-export type ApiResponseModel<T, K extends string> = {
+export type DMJSResponseModel<T, K extends string> = {
     [key in K]: T[];
 } & {
     total: number;

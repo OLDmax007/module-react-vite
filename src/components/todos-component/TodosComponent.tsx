@@ -1,4 +1,4 @@
-import {getTodos} from "../../services/api.service.ts";
+import {getTodos} from "../../services/api.dmjs.service.ts";
 import {useEffect, useState} from "react";
 import {TodoModel} from "../../models/TodoModel.ts";
 import TodoComponent from "./TodoComponent.tsx";

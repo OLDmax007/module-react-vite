@@ -1,4 +1,4 @@
-import {getPosts} from "../../services/api.service.ts";
+import {getPosts} from "../../services/api.dmjs.service.ts";
 import {useEffect, useState} from "react";
 import {PostModel} from "../../models/PostModel.ts";
 import PostComponent from "./PostComponent.tsx";

@@ -1,18 +1,12 @@
-import PostsComponent from "./components/posts-component/PostsComponent.tsx";
-import TodosComponent from "./components/todos-component/TodosComponent.tsx";
-import CommentsComponent from "./components/comments-component/CommentsComponent.tsx";
+import ProductsComponent from "./components/products-component/ProductsComponent.tsx";
 
 function App() {
 
 
     return(<main>
-            <TodosComponent/>
-            <hr/>
-            <PostsComponent/>
-            <hr/>
-            <CommentsComponent/>
+            <ProductsComponent/>
         </main>
     );
-}; 
+};
 
 export default App
