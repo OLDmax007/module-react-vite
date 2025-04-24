@@ -4,6 +4,7 @@ const Menu = () => {
     return (
         <nav>
             <ul>
+                <li><Link to={''}>Home page</Link></li>
                 <li><Link to={"/users/jsonplaceholder"}>Users (JSONPlaceholder)</Link></li>
                 <li><Link to={"/users/dummyjson"}>Users (DummyJSON)</Link></li>
                 <li><Link to={"/posts/jsonplaceholder"}>Posts (JSONPlaceholder)</Link></li>
