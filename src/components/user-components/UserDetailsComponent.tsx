@@ -1,8 +1,8 @@
 import {FC} from "react";
-import {UserDMJSModel} from "../../models/UserDMJSModel.ts";
+import {UserModel} from "../../models/UserModel.ts";
 
 type UserComponentProps = {
-    user: UserDMJSModel;
+    user: UserModel;
 };
 
 const UserComponent: FC<UserComponentProps> = ({ user }) => {

@@ -1,23 +1,22 @@
 import {FC, useEffect, useState} from "react";
 import {getAll} from "../../services/base.api.service.ts";
 import {BaseResponseModel} from "../../models/BaseResponseModel.ts";
-import {urls} from "../../constants/urls.ts";
 import UserComponent from "./UserComponent.tsx";
-import {URLType} from "../../models/UrlModel.ts";
-import {UserDMJSModel} from "../../models/UserDMJSModel.ts";
+import {UrlModel} from "../../models/UrlModel.ts";
+import {UserModel} from "../../models/UserModel.ts";
 
 type UsersComponentProps = {
-    baseUrl: URLType;
+    baseUrl: UrlModel;
 };
 
 const UsersComponent: FC<UsersComponentProps> = ({ baseUrl }) => {
-    const [users, setUsers] = useState<UserDMJSModel[]>([]);
+    const [users, setUsers] = useState<UserModel[]>([]);
 
     useEffect(() => {
         const fetchUsers = async () => {
-                const response = await getAll<BaseResponseModel & { users: UserDMJSModel[] }>(
+                const response = await getAll<BaseResponseModel & { users: UserModel[] }>(
                     baseUrl,
-                    urls.dmjs.users
+                        'users'
                 );
                 setUsers(response.users);
         };
@@ -30,7 +29,7 @@ const UsersComponent: FC<UsersComponentProps> = ({ baseUrl }) => {
 
     return (
         <div className="grid grid-cols-4 gap-4">
-            {users.map((user: UserDMJSModel) => (
+            {users.map((user: UserModel) => (
                 <UserComponent user={user} key={user.id} />
             ))}
         </div>

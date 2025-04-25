@@ -1,4 +1,4 @@
-export interface UserDMJSModel {
+export interface UserModel {
 	id: number;
 	firstName: string;
 	lastName: string;
@@ -15,12 +15,12 @@ export interface UserDMJSModel {
 	height: number;
 	weight: number;
 	eyeColor: string;
-	hair: UserDMJSModelHair;
+	hair: UserModelHair;
 	ip: string;
-	address: UserDMJSModelAddress;
+	address: UserModelAddress;
 	macAddress: string;
 	university: string;
-	bank: UserDMJSModelBank;
+	bank: UserModelBank;
 	company: UserModelCompany;
 	ein: string;
 	ssn: string;
@@ -28,48 +28,48 @@ export interface UserDMJSModel {
 	crypto: UserModelCrypto;
 	role: string;
 }
-export interface UserDMJSModelHair {
+export interface UserModelHair {
 	color: string;
 	type: string;
 }
-export interface UserDMJSModelAddressCoordinates {
+export interface UserModelAddressCoordinates {
 	lat: number;
 	lng: number;
 }
-export interface UserDMJSModelAddress {
+export interface UserModelAddress {
 	address: string;
 	city: string;
 	state: string;
 	stateCode: string;
 	postalCode: string;
-	coordinates: UserDMJSModelAddressCoordinates;
+	coordinates: UserModelAddressCoordinates;
 	country: string;
 }
-export interface UserDMJSModelBank {
+export interface UserModelBank {
 	cardExpire: string;
 	cardNumber: string;
 	cardType: string;
 	currency: string;
 	iban: string;
 }
-export interface UserDMJSModelCompanyAddressCoordinates {
+export interface UserModelCompanyAddressCoordinates {
 	lat: number;
 	lng: number;
 }
-export interface UserDMJSModelCompanyAddress {
+export interface UserModelCompanyAddress {
 	address: string;
 	city: string;
 	state: string;
 	stateCode: string;
 	postalCode: string;
-	coordinates: UserDMJSModelCompanyAddressCoordinates;
+	coordinates: UserModelCompanyAddressCoordinates;
 	country: string;
 }
 export interface UserModelCompany {
 	department: string;
 	name: string;
 	title: string;
-	address: UserDMJSModelCompanyAddress;
+	address: UserModelCompanyAddress;
 }
 export interface UserModelCrypto {
 	coin: string;

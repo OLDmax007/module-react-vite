@@ -1,4 +1,5 @@
 const HomePage = () => {
+
     return (
         <div>
             <h2>HOME</h2>
