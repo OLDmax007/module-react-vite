@@ -5,8 +5,8 @@ const Menu = () => {
         <nav>
             <ul>
                 <li><Link to={''}>Home page</Link></li>
-                <li><Link to={"/users"}>Users (DummyJSON)</Link></li>
-                <li><Link to={"/posts"}>Posts (DummyJSON)</Link></li>
+                <li><Link to={"/users"}>Users </Link></li>
+                <li><Link to={"/posts"}>Posts </Link></li>
             </ul>
         </nav>
     );
