@@ -9,10 +9,10 @@ import CartsPage from "../pages/CartsPage.tsx";
 export const routes = createBrowserRouter([
     {path: '/', element: <MainLayout/>, children: [
             {index: true, element: <HomePage/>},
-            { path: '/users', element: <UsersPage baseUrl={baseUrlDMJS} />, children: [
+            { path: 'users', element: <UsersPage baseUrl={baseUrlDMJS} />, children: [
                     {path: 'details', element: <UserDetailsPage/>},
                     // {path: ':userId/carts', element: <CartsPage/>}
                 ]},
-            {path: '/users/:userId/carts', element: <CartsPage/>}
+            {path: 'users/:userId/carts', element: <CartsPage/>}
         ]
     }])
