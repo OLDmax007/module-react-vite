@@ -30,9 +30,13 @@ const CartsComponent = () => {
 
     return (
         <div>
-            {carts.map((cart: CartModel) => (
+            { carts.length > 0 ?
+                (carts.map((cart: CartModel) => (
                 <CartComponent key={cart.id} cart={cart}/>
-            ))}
+            ))) : (
+                <p>Cart is empty</p>
+                )
+            }
         </div>
     );
 };

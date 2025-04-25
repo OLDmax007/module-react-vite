@@ -11,7 +11,8 @@ export const routes = createBrowserRouter([
             {index: true, element: <HomePage/>},
             { path: '/users', element: <UsersPage baseUrl={baseUrlDMJS} />, children: [
                     {path: 'details', element: <UserDetailsPage/>},
-                    {path: ':userId/carts', element: <CartsPage/>}
+                    // {path: ':userId/carts', element: <CartsPage/>}
                 ]},
+            {path: '/users/:userId/carts', element: <CartsPage/>}
         ]
     }])
