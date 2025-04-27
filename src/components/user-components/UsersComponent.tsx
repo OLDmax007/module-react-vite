@@ -12,13 +12,14 @@ type UsersComponentProps = {
 const UsersComponent: FC<UsersComponentProps> = ({ baseUrl }) => {
     const [users, setUsers] = useState<UserModel[]>([]);
 
+
     useEffect(() => {
         const fetchUsers = async () => {
-                const response = await getAll<BaseResponseModel & { users: UserModel[] }>(
-                    baseUrl,
-                        'users'
-                );
-                setUsers(response.users);
+            const response = await getAll<BaseResponseModel & { users: UserModel[] }>(
+                baseUrl,
+                'users'
+            );
+            setUsers(response.users);
         };
 
         fetchUsers();
@@ -28,12 +29,15 @@ const UsersComponent: FC<UsersComponentProps> = ({ baseUrl }) => {
     }, [baseUrl]);
 
     return (
-        <div className="grid grid-cols-4 gap-4">
-            {users.map((user: UserModel) => (
-                <UserComponent user={user} key={user.id} />
-            ))}
+        <div>
+    <div className="grid grid-cols-4 gap-4">
+        {users.map((user: UserModel) => (
+            <UserComponent user={user} key={user.id}/>
+        ))}
+    </div>
         </div>
-    );
+)
+    ;
 };
 
 export default UsersComponent;
