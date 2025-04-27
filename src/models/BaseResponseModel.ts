@@ -1,5 +1,5 @@
 export type BaseResponseModel = {
-    total: number;
-    skip: number;
-    limit: number;
+    total?: number;
+    skip?: number;
+    limit?: number;
 }

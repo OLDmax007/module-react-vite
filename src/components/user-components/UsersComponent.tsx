@@ -4,6 +4,7 @@ import {BaseResponseModel} from "../../models/BaseResponseModel.ts";
 import UserComponent from "./UserComponent.tsx";
 import {UrlModel} from "../../models/UrlModel.ts";
 import {UserModel} from "../../models/UserModel.ts";
+import {useSearchParams} from "react-router-dom";
 
 type UsersComponentProps = {
     baseUrl: UrlModel;
@@ -12,21 +13,28 @@ type UsersComponentProps = {
 const UsersComponent: FC<UsersComponentProps> = ({ baseUrl }) => {
     const [users, setUsers] = useState<UserModel[]>([]);
 
+    const [query] = useSearchParams()
+    const page = query.get('page') || 1;
+
 
     useEffect(() => {
         const fetchUsers = async () => {
             const response = await getAll<BaseResponseModel & { users: UserModel[] }>(
                 baseUrl,
-                'users'
+                'users',
+                {limit: 100, page: +page},
+
             );
-            setUsers(response.users);
+            if (response.users.length > 0) {
+                setUsers(response.users);
+            }
         };
 
         fetchUsers();
         return () => {
             console.log('completed')
         }
-    }, [baseUrl]);
+    }, [baseUrl, page]);
 
     return (
         <div>
