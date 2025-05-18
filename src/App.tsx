@@ -1,26 +1,42 @@
 import './App.css'
-import useFetch from "./hooks/useFetch.tsx";
-
-interface CommentModel {
-    postId: number;
-    id: number;
-    name: string;
-    email: string;
-    body: string;
-}
-
+import {Outlet} from "react-router-dom";
+import Menu from "./components/Menu.tsx";
+import ThemeContext from "./context/ThemeContext.tsx";
+import {useState} from "react";
+import CounterContext from "./context/CounterContext.tsx";
 
 function App() {
-     const comments= useFetch<CommentModel[]>('https://jsonplaceholder.typicode.com/comments', [])
+
+    const [value, setValue] = useState<number>(0)
+    const [theme, setTheme] = useState<'bg-white' | 'bg-black'>('bg-white')
+
+    const toggleTheme = () => {
+        setTheme(prevState => prevState === 'bg-white' ? 'bg-black' : 'bg-white');
+    }
+
+    const inc = () => {
+        setValue(prevState => ++prevState)
+    }
+
+    const dec = () => {
+        setValue(prevState => --prevState)
+    }
+
+
 
     return (
-      <main>
-          {JSON.stringify(comments)}
-        <h1 className="text-3xl font-bold">
-          Hello world!
-        </h1>
-      </main>
-  )
+        <main>
+            <Menu/>
+            <ThemeContext.Provider value={{
+                theme,
+                toggleTheme
+            }}>
+                <CounterContext value={{count: value, inc, dec}}>
+                <Outlet/>
+                </CounterContext>
+            </ThemeContext.Provider>
+        </main>
+    )
 }
 
 export default App
