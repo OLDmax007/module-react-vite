@@ -12,7 +12,7 @@ const useFetch = <T,>(endpoint: string, defaultValue: T):T => {
 
         fetchApi()
 
-    }, []);
+    }, [items]);
 
     return items
 }
