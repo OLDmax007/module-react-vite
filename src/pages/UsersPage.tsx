@@ -1,25 +1,24 @@
 import {useAppSelector} from "../hooks/useAppSelector.ts";
 import {UserType} from "../models/types/UserType.ts";
+import {Link} from "react-router-dom";
 import useAppFetch from "../hooks/useAppFetch.ts";
-import {getAll} from "../services/api.jspl.service.ts";
-import {userSliceActions} from "../redux/user-slice/userSlice.ts";
+import userSliceAsyncActions from "../redux/slices/user/userSliceAsyncActions.ts";
 
 
 const UsersPage = () => {
     const users = useAppSelector(state => state.userSlice.users);
-
-    useAppFetch<UserType[]>(async () => {
-        return await getAll<UserType[]>('users')
-    }, userSliceActions.loadUsers)
+    useAppFetch(userSliceAsyncActions.loadUsers)
 
     return (
-        <div>
+        <ul>
             {
-                users.map((user: UserType) => {
-                    return <div key={user.id}>{user.name}</div>;
-                })
+                users.map((user: UserType) => (
+                     <Link key={user.id} to={'/users/' + user.id}>
+                        <li>{user.name}</li>
+                    </Link>
+                ))
             }
-        </div>
+        </ul>
     );
 };
 

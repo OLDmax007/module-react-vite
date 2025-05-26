@@ -1,19 +1,15 @@
 import {useEffect} from "react";
-import {DispatchType, useAppDispatch} from "./useAppDispatch.ts";
+import {useAppDispatch} from "./useAppDispatch.ts";
 
-const useAppFetch =<T>(serviceFunc: () => Promise<T>, actionFunc: (payload: T) => { type: string, payload: T}) => {
-    const dispatch: DispatchType = useAppDispatch()
+const useAppFetch = (actionFunc: () => any): void => {
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
-        const fetchApi = async () => {
-            const response = await serviceFunc()
-            dispatch(actionFunc(response))
+        const action = actionFunc();
+        if (action) {
+            dispatch(action);
         }
+    }, [dispatch]);
+};
 
-        fetchApi()
-    }, [serviceFunc, actionFunc]);
-
-    return
-}
-
-export default useAppFetch
+export default useAppFetch;

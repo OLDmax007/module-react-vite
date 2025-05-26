@@ -1,20 +1,22 @@
 import {useAppSelector} from "../hooks/useAppSelector.ts";
-import useAppFetch from "../hooks/useAppFetch.ts";
-import {getAll} from "../services/api.jspl.service.ts";
 import {PostType} from "../models/types/PostType.ts";
-import {postSliceActions} from "../redux/post-slice/postSlice.ts";
+import useAppFetch from "../hooks/useAppFetch.ts";
+import {Link} from "react-router-dom";
+import postSliceAsyncActions from "../redux/slices/post/postSliceAsyncActions.ts";
+
 
 const PostsPage = () => {
 
     const posts = useAppSelector(state => state.postSlice.posts)
-    useAppFetch(async () => {
-        return await getAll<PostType[]>('posts')
-    }, postSliceActions.loadPosts)
+    useAppFetch(postSliceAsyncActions.loadPosts)
+
 
     return (
         <div>
             {posts.map((post: PostType) => (
-                <div key={post.id}>{post.title}</div>
+                <Link key={post.id} to={'/posts/' + post.id}>
+                    <li>{post.title}</li>
+                </Link>
                 ))}
         </div>
     );
