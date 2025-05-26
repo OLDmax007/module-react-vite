@@ -5,7 +5,6 @@ import {PostType} from "../../../models/types/PostType.ts";
 import postSliceAsyncActions from "./postSliceAsyncActions.ts";
 import {StateType} from "../../../models/types/StateType.ts";
 import state from "../../states/state.ts";
-import userSliceAsyncActions from "../user/userSliceAsyncActions.ts";
 import actions from "../../actions/actions.ts";
 
 const {setLoading} = actions
@@ -32,7 +31,7 @@ export const postSlice = createSlice({
             state.post = action.payload
         })
         .addMatcher(
-            isPending(userSliceAsyncActions.loadUser, userSliceAsyncActions.loadUsers),
+            isPending(postSliceAsyncActions.loadPost, postSliceAsyncActions.loadPosts),
             (state) => {
                 state.post = null;
             }

@@ -7,6 +7,7 @@ import {postSlice} from "./postSlice.ts";
 const postSliceAsyncActions = {
     loadPosts: createAsyncThunk<PostType[], void, {rejectValue: string }>('postSlice/loadPosts', async (_, thunkAPI) => {
         try {
+            thunkAPI.dispatch(postSlice.actions.setLoading(false))
             const data = await getAll<PostType[]>('posts');
             thunkAPI.dispatch(postSlice.actions.setLoading(true))
             return thunkAPI.fulfillWithValue(data)
@@ -20,9 +21,11 @@ const postSliceAsyncActions = {
 
     loadPost: createAsyncThunk<PostType, number, {rejectValue: string }>('postSlice/loadPost', async (id: number, thunkAPI) => {
         try {
+            thunkAPI.dispatch(postSlice.actions.setLoading(false))
             const data = await getAll<PostType>('posts/' + id);
             thunkAPI.dispatch(postSlice.actions.setLoading(true))
             return thunkAPI.fulfillWithValue(data)
+
         } catch (error) {
             if (error instanceof Error) {
                 return thunkAPI.rejectWithValue(error.message)

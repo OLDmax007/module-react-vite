@@ -6,15 +6,14 @@ import LoadingComponent from "../components/LoadingComponent.tsx";
 import {useCallback} from "react";
 
 const UserPage = () => {
-    const {userSlice: {user, loading}} = useAppSelector(state => state)
+    const {user, loading} = useAppSelector(state => state.userSlice)
     const {userId} = useParams()
-    console.log(user)
+
 
     const fetchUser = useCallback(() => {
         return userId ? userSliceAsyncActions.loadUser(+userId) : undefined
     }, [userId]);
     useAppFetch(fetchUser)
-    console.log(user)
     return (
         <>
             {!loading && <LoadingComponent/>}

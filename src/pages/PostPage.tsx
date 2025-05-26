@@ -3,16 +3,18 @@ import useAppFetch from "../hooks/useAppFetch.ts";
 import postSliceAsyncActions from "../redux/slices/post/postSliceAsyncActions.ts";
 import {useParams} from "react-router-dom";
 import LoadingComponent from "../components/LoadingComponent.tsx";
+import {useCallback} from "react";
 
 const PostPage = () => {
-    const {post, loading} = useAppSelector(state => state.postSlice)
+    const {post,loading} = useAppSelector(state => state.postSlice)
     const {postId}= useParams()
-    console.log(loading)
 
-    useAppFetch(() => {
 
-       return postId ? postSliceAsyncActions.loadPost(+postId) : undefined
-    })
+    const fetchPost = useCallback(() => {
+        return postId ? postSliceAsyncActions.loadPost(+postId) : undefined
+    }, [postId]);
+
+    useAppFetch(fetchPost)
     return (
         <>
             {!loading && <LoadingComponent/>}

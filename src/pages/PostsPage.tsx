@@ -3,15 +3,18 @@ import {PostType} from "../models/types/PostType.ts";
 import useAppFetch from "../hooks/useAppFetch.ts";
 import {Link} from "react-router-dom";
 import postSliceAsyncActions from "../redux/slices/post/postSliceAsyncActions.ts";
+import LoadingComponent from "../components/LoadingComponent.tsx";
 
 
 const PostsPage = () => {
 
-    const posts = useAppSelector(state => state.postSlice.posts)
+    const {posts,loading} = useAppSelector(state => state.postSlice)
     useAppFetch(postSliceAsyncActions.loadPosts)
 
 
     return (
+        <>
+        {!loading && <LoadingComponent/>}
         <div>
             {posts.map((post: PostType) => (
                 <Link key={post.id} to={'/posts/' + post.id}>
@@ -19,6 +22,7 @@ const PostsPage = () => {
                 </Link>
                 ))}
         </div>
+        </>
     );
 };
 

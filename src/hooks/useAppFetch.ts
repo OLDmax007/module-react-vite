@@ -9,7 +9,7 @@ const useAppFetch = (actionFunc: () => any): void => {
         if (action) {
             dispatch(action);
         }
-    }, [dispatch]);
+    }, [dispatch, actionFunc]);
 };
 
 export default useAppFetch;
