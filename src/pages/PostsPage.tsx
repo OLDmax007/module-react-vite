@@ -7,10 +7,10 @@ import LoadingComponent from "../components/LoadingComponent.tsx";
 
 
 const PostsPage = () => {
-
+    console.log("posts rerender", performance.now());
     const {posts,loading} = useAppSelector(state => state.postSlice)
-    useAppFetch(postSliceAsyncActions.loadPosts)
 
+    useAppFetch(postSliceAsyncActions.loadPosts)
 
     return (
         <>

@@ -6,6 +6,7 @@ import LoadingComponent from "../components/LoadingComponent.tsx";
 import {useCallback} from "react";
 
 const PostPage = () => {
+    console.log("post rerender", performance.now());
     const {post,loading} = useAppSelector(state => state.postSlice)
     const {postId}= useParams()
 

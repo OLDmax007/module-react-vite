@@ -7,6 +7,7 @@ import userSliceAsyncActions from "../redux/slices/user/userSliceAsyncActions.ts
 
 
 const UsersPage = () => {
+    console.log("users rerender", performance.now());
     const {users, loading} = useAppSelector(state => state.userSlice);
 
     useAppFetch( userSliceAsyncActions.loadUsers)

@@ -6,6 +6,7 @@ import LoadingComponent from "../components/LoadingComponent.tsx";
 import {useCallback} from "react";
 
 const UserPage = () => {
+    console.log("user rerender", performance.now());
     const {user, loading} = useAppSelector(state => state.userSlice)
     const {userId} = useParams()
 
