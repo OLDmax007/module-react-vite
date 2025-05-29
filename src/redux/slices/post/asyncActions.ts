@@ -1,10 +1,11 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {getAll} from "../../../services/api.jspl.service.ts";
-import {PostType} from "../../../models/types/PostType.ts";
 import {postSlice} from "./postSlice.ts";
+import {PostType} from "../../../models/types/post/PostType.ts";
+import handleError from "../../../helpers/handleError.ts";
 
 
-const postSliceAsyncActions = {
+const asyncActions = {
     loadPosts: createAsyncThunk<PostType[], void, {rejectValue: string }>('postSlice/loadPosts', async (_, thunkAPI) => {
         try {
             thunkAPI.dispatch(postSlice.actions.setLoading(false))
@@ -27,13 +28,10 @@ const postSliceAsyncActions = {
             return thunkAPI.fulfillWithValue(data)
 
         } catch (error) {
-            if (error instanceof Error) {
-                return thunkAPI.rejectWithValue(error.message)
-            }
-            return thunkAPI.rejectWithValue('Unknown message')
+            return thunkAPI.rejectWithValue(handleError(error))
         }
     })
 
 }
 
-export  default postSliceAsyncActions
+export  default asyncActions

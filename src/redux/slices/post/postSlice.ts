@@ -1,37 +1,26 @@
 import {createSlice, isPending, isRejected, PayloadAction} from "@reduxjs/toolkit";
-
-import {PostSliceType} from "../../../models/types/PostSliceType.ts";
-import {PostType} from "../../../models/types/PostType.ts";
-import postSliceAsyncActions from "./postSliceAsyncActions.ts";
-import {StateType} from "../../../models/types/StateType.ts";
-import state from "../../states/state.ts";
+import asyncActions from "./asyncActions.ts";
 import actions from "../../actions/actions.ts";
+import postState from "./postState.ts";
+import {PostType} from "../../../models/types/post/PostType.ts";
 
 const {setLoading} = actions
 
-
-const initialState:PostSliceType & StateType = {
-    posts: [],
-    post: null,
-    ...state
-}
-
-
 export const postSlice = createSlice({
     name: 'postSlice',
-    initialState: initialState,
+    initialState: postState,
     reducers: {
         setLoading
     },
     extraReducers: builder => builder
-        .addCase(postSliceAsyncActions.loadPosts.fulfilled, (state, action: PayloadAction<PostType[]>) => {
+        .addCase(asyncActions.loadPosts.fulfilled, (state, action: PayloadAction<PostType[]>) => {
             state.posts = action.payload
         })
-        .addCase(postSliceAsyncActions.loadPost.fulfilled, (state, action:PayloadAction<PostType>)=> {
+        .addCase(asyncActions.loadPost.fulfilled, (state, action:PayloadAction<PostType>)=> {
             state.post = action.payload
         })
         .addMatcher(
-            isPending(postSliceAsyncActions.loadPost, postSliceAsyncActions.loadPosts),
+            isPending(asyncActions.loadPost, asyncActions.loadPosts),
             (state) => {
                 state.post = null;
             }

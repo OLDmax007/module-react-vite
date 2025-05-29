@@ -1,8 +1,10 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {getAll} from "../../../services/api.jspl.service.ts";
-import {UserType} from "../../../models/types/UserType.ts";
+import {UserType} from "../../../models/types/user/UserType.ts";
+import handleError from "../../../helpers/handleError.ts";
 
-const userSliceAsyncActions = {
+
+const asyncActions = {
     loadUsers: createAsyncThunk<UserType[], void, {rejectValue: string}>(
         'userSlice/loadUsers',
         async (_, thunkAPI) => {
@@ -24,10 +26,7 @@ const userSliceAsyncActions = {
             try {
                 return thunkAPI.fulfillWithValue(await getAll<UserType>('users/' + id))
             } catch (error) {
-                if (error instanceof Error) {
-                    return  thunkAPI.rejectWithValue(error.message)
-                }
-                return thunkAPI.rejectWithValue('Unknown message')
+                return thunkAPI.rejectWithValue(handleError(error))
             }
 
         }
@@ -36,4 +35,4 @@ const userSliceAsyncActions = {
 
 }
 
-export default userSliceAsyncActions
+export default asyncActions

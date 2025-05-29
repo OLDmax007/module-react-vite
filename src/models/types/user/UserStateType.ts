@@ -1,6 +1,6 @@
 import {UserType} from "./UserType.ts";
 
-export type  UserSliceType = {
+export type  UserStateType = {
     users: UserType[]
     user: UserType | null
 }

@@ -1,15 +1,17 @@
-import {useEffect} from "react";
-import {useAppDispatch} from "./useAppDispatch.ts";
+    import {useEffect} from "react";
+    import {useAppDispatch} from "./useAppDispatch.ts";
 
-const useAppFetch = (actionFunc: () => any): void => {
-    const dispatch = useAppDispatch();
+    const useAppFetch = (actionFunc: () => any, isFetch?: boolean): void => {
 
-    useEffect(() => {
-        const action = actionFunc();
-        if (action) {
-            dispatch(action);
-        }
-    }, [dispatch, actionFunc]);
-};
+        const dispatch = useAppDispatch();
 
-export default useAppFetch;
+        useEffect(() => {
+            if (isFetch === false) return;
+            const action = actionFunc();
+            if (action) {
+                dispatch(action);
+            }
+        }, [dispatch, actionFunc, isFetch]);
+    };
+
+    export default useAppFetch;

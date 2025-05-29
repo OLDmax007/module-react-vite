@@ -1,7 +1,7 @@
 import {useAppSelector} from "../hooks/useAppSelector.ts";
 import useAppFetch from "../hooks/useAppFetch.ts";
 import {useParams} from "react-router-dom";
-import userSliceAsyncActions from "../redux/slices/user/userSliceAsyncActions.ts";
+import asyncActions from "../redux/slices/user/asyncActions.ts";
 import LoadingComponent from "../components/LoadingComponent.tsx";
 import {useCallback} from "react";
 
@@ -12,7 +12,7 @@ const UserPage = () => {
 
 
     const fetchUser = useCallback(() => {
-        return userId ? userSliceAsyncActions.loadUser(+userId) : undefined
+        return userId ? asyncActions.loadUser(+userId) : undefined
     }, [userId]);
     useAppFetch(fetchUser)
     return (
