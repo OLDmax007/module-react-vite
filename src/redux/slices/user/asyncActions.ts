@@ -11,10 +11,7 @@ const asyncActions = {
             try {
                 return thunkAPI.fulfillWithValue(await getAll<UserType[]>('users'))
             } catch (error) {
-                if (error instanceof Error) {
-                    return  thunkAPI.rejectWithValue(error.message)
-                }
-                return thunkAPI.rejectWithValue('Unknown message')
+                return thunkAPI.rejectWithValue(handleError(error))
             }
 
         }
@@ -31,7 +28,6 @@ const asyncActions = {
 
         }
     )
-
 
 }
 

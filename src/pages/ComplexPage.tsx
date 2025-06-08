@@ -26,8 +26,6 @@ const ComplexPage = () => {
         dispatch(postSliceActions.filteredPosts(userId))
     }, [dispatch, posts, userId]);
 
-
-
     return (
         <>
             {(!loadingComments && !loadingPosts && !loadingUsers) && <LoadingComponent/>}

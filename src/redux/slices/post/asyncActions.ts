@@ -13,10 +13,7 @@ const asyncActions = {
             thunkAPI.dispatch(postSlice.actions.setLoading(true))
             return thunkAPI.fulfillWithValue(data)
         } catch (error) {
-            if (error instanceof Error) {
-                return thunkAPI.rejectWithValue(error.message)
-            }
-            return thunkAPI.rejectWithValue('Unknown message')
+            return thunkAPI.rejectWithValue(handleError(error))
         }
     }),
 
