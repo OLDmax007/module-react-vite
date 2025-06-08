@@ -16,7 +16,7 @@ const commentSlice =  createSlice(
             } else if (loadComment.fulfilled.match(action)) {
                 state.comment = action.payload
             }
-        }).addMatcher(isPending, (state) => {
+        }).addMatcher(isPending(loadComments, loadComments), (state) => {
             state.loading = false
             state.comment = null
         })

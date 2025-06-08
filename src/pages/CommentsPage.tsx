@@ -8,14 +8,14 @@ import {Link} from "react-router-dom";
 const CommentsPage = () => {
    const {comments, loading} = useAppSelector(state => state.commentSlice)
 
-    useAppFetch(asyncActions.loadComments)
+    useAppFetch(asyncActions.loadComments, comments.length === 0)
 
     return (
         <ul>
             {!loading && <LoadingComponent/>}
             {
                 comments.map((comment: CommentType) => (
-                    <Link to={'/comments/' + comment.id}><li key={comment.id}>{comment.name}</li></Link>
+                    <Link key={comment.id} to={'/comments/' + comment.id}><li key={comment.id}>{comment.name}</li></Link>
                 ))
             }
             

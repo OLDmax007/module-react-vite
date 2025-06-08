@@ -1,9 +1,10 @@
 import {PayloadAction} from "@reduxjs/toolkit";
+import {StateType} from "../../models/types/StateType.ts";
 
 const actions = {
-    setLoading: <T extends {loading: boolean}>(state:T, action: PayloadAction<boolean>) => {
+    setLoading: (state:StateType, action: PayloadAction<boolean>) => {
         state.loading = action.payload;
-    }
+    },
 }
 
 

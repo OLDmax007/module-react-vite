@@ -10,10 +10,7 @@ const UsersPage = () => {
     console.log("users rerender", performance.now());
     const {users, loading} = useAppSelector(state => state.userSlice);
 
-    useAppFetch( asyncActions.loadUsers)
-
-    console.log(users)
-
+    useAppFetch( asyncActions.loadUsers, users.length === 0)
     return (
         <ul>
             {!loading && <LoadingComponent/>}

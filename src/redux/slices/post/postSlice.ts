@@ -4,13 +4,14 @@ import actions from "../../actions/actions.ts";
 import postState from "./postState.ts";
 import {PostType} from "../../../models/types/post/PostType.ts";
 
-const {setLoading} = actions
+import postActions from "./postActions.ts";
 
 export const postSlice = createSlice({
     name: 'postSlice',
     initialState: postState,
     reducers: {
-        setLoading
+        ...actions,
+        ...postActions,
     },
     extraReducers: builder => builder
         .addCase(asyncActions.loadPosts.fulfilled, (state, action: PayloadAction<PostType[]>) => {
@@ -29,3 +30,5 @@ export const postSlice = createSlice({
             console.error(action.payload)
         })
 })
+
+export const postSliceActions = {...postSlice.actions}

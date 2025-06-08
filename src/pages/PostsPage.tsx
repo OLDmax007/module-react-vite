@@ -10,7 +10,7 @@ const PostsPage = () => {
     console.log("posts rerender", performance.now());
     const {posts,loading} = useAppSelector(state => state.postSlice)
 
-    useAppFetch(asyncActions.loadPosts)
+    useAppFetch(asyncActions.loadPosts, posts.length === 0)
 
     return (
         <>

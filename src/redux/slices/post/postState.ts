@@ -5,6 +5,7 @@ import {PostStateType} from "../../../models/types/post/PostStateType.ts";
 
 const postState:PostStateType & StateType = {
     posts: [],
+    postsByUserId: [],
     post: null,
     ...state
 }
